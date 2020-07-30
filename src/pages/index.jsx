@@ -7,6 +7,8 @@ import SEO from '../components/seo';
 import Header from '../features/header';
 import SectionA from '../features/sectionA';
 import SectionB from '../features/sectionB';
+import SectionC from '../features/sectionC';
+import SectionD from '../features/sectionD';
 
 let theme = createMuiTheme({
   overrides: {
@@ -27,12 +29,14 @@ let theme = createMuiTheme({
     },
   },
   palette: {
-    default: "#ffffff",
     primary: {
       main: '#2e5bcc',
     },
     text: {
       primary: '#002aaf',
+    },
+    background: {
+      default: '#ffffff',
     },
   },
   typography: {
@@ -46,10 +50,25 @@ let theme = createMuiTheme({
       fontSize: 40,
       fontWeight: 500,
     },
+    h2: {
+      fontSize: 28,
+      fontWeight: 500,
+      color: '#000000',
+    },
+    h3: {
+      fontSize: 18,
+      fontWeight: 300,
+    },
     body2: {
       fontSize: 20,
       fontWeight: 400,
       color: '#505361',
+    },
+    subtitle1: {
+      fontSize: 16,
+      fontWeight: 300,
+      color: '#505361',
+      lineHeight: 1.5,
     },
   },
 });
@@ -64,6 +83,8 @@ const IndexPage = () => {
       <Header />
       <SectionA />
       <SectionB />
+      <SectionC />
+      <SectionD />
     </ThemeProvider>
   );
 };

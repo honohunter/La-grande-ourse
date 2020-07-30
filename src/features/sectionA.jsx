@@ -2,9 +2,9 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, Typography, Hidden, Container, Grid } from '@material-ui/core';
 
-import SectionABackground from '../assets/images/sectionA-background.svg';
-import SectionALeftImage from '../assets/images/sectionA-left-image.svg';
-import SectionARightImage from '../assets/images/sectionA-right-image.svg';
+import SectionABackground from '../assets/images/sectionA-background.inline.svg';
+import SectionALeftImage from '../assets/images/sectionA-left-image.inline.svg';
+import SectionARightImage from '../assets/images/sectionA-right-image.inline.svg';
 
 const useStyles = makeStyles(theme => ({
   section: {
@@ -60,7 +60,7 @@ export default function SectionA() {
         <SectionABackground className={classes.backgroundImage} />
       </Hidden>
       <Container className={classes.container}>
-        <Grid container alignItems="center" justify="center" className={classes.grid}>
+        <Grid container direction="row" alignItems="center" justify="center" className={classes.grid}>
           <div className={classes.textSection}>
             <Typography variant="h1" color="textPrimary" align="center" gutterBottom>
               Calculer le montant des gratifications !

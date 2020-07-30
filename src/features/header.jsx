@@ -18,7 +18,8 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 
-import Logo from '../assets/images/logo-la-grande-ourse.svg';
+import Logo from '../assets/images/logo-la-grande-ourse.inline.svg';
+import MobileMenuBackground from '../assets/images/mobileMenu-background.svg';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,12 +54,8 @@ const useStyles = makeStyles(theme => ({
       width: 150,
     },
   },
-  h3: {
-    fontSize: 18,
-    fontWeight: 300,
-  },
+
   h2: {
-    fontSize: 28,
     fontWeight: 300,
   },
   mobileMenu: {
@@ -66,6 +63,7 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     width: '100%',
     zIndex: 100,
+    overflow: 'hidden',
   },
   mobileMenuPanel: {
     padding: theme.spacing(0, 5, 5, 5),
@@ -76,6 +74,10 @@ const useStyles = makeStyles(theme => ({
   activeLink: {
     fontWeight: 500,
     borderBottom: '3px solid #aec9ff',
+  },
+  mobileMenuBackground: {
+    position: 'absolute',
+    width: '100%',
   },
 }));
 
@@ -117,6 +119,7 @@ export default function Header() {
       {isMobileMenuOpen ? (
         <Hidden lgUp>
           <div className={classes.mobileMenu}>
+            <MobileMenuBackground className={classes.mobileMenuBackground} />
             <List component="nav">
               <ListItem>
                 <IconButton className={classes.iconButton} onClick={handleMenuButtonClick}>

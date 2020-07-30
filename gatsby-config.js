@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Enhance by diffbot`,
-    description: `Enhance by diffbot`,
-    author: `Enhance by diffbot`,
+    title: `La Grande Ourse`,
+    description: `La Grande Ourse`,
+    author: `La Grande Ourse`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -33,7 +33,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /assets/,
+          include: /\.inline\.svg$/
         },
       },
     },
