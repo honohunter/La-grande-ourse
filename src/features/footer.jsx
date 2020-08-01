@@ -1,6 +1,17 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, Typography, Container, Grid, Box, Button, List, ListItem } from '@material-ui/core';
+import {
+  makeStyles,
+  Typography,
+  Container,
+  Grid,
+  Box,
+  Button,
+  List,
+  ListItem,
+  TextField,
+  FormControl,
+} from '@material-ui/core';
 
 import Logo from '../assets/images/logo-la-grande-ourse.inline.svg';
 import LinkedInIcon from '../assets/icons/linkedIn.inline.svg';
@@ -56,6 +67,22 @@ const useStyles = makeStyles(theme => ({
   firstListElement: {
     fontWeight: 600,
     paddingBottom: theme.spacing(2),
+  },
+  inputLabelPropsFocused: {
+    color: 'transparent !important',
+  },
+  inputProps: {
+    backgroundColor: '#ffffff !important',
+    color: '#000000',
+  },
+  button: {
+    border: '1px solid white',
+    borderRadius: 6,
+    height: 40,
+    marginLeft: 10,
+  },
+  formInput: {
+    display: 'flex',
   },
 }));
 
@@ -163,7 +190,23 @@ export default function Footer() {
               <ListItem>
                 <Typography variant="h3">S’inscrire à la newsletter</Typography>
               </ListItem>
-              <div></div>
+              <form>
+                <div className={classes.formInput}>
+                  <TextField
+                    label="Votre email"
+                    variant="outlined"
+                    size="small"
+                    InputLabelProps={{
+                      shrink: false,
+                      classes: { focused: classes.inputLabelPropsFocused },
+                    }}
+                    InputProps={{ classes: { root: classes.inputProps } }}
+                  />
+                  <Button variant="contained" color="primary" disableElevation className={classes.button}>
+                    Ok
+                  </Button>
+                </div>
+              </form>
               <ListItem>
                 <Typography variant="h3">
                   <Box fontSize={14}>Nous envoyons uniquement aux emails nominatifs.</Box>
