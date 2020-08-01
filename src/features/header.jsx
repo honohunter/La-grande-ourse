@@ -53,6 +53,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       width: 150,
     },
+    fill: '#002AAF',
+    width: 226,
   },
 
   h2: {

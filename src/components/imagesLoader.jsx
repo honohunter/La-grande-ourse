@@ -49,6 +49,13 @@ const ImageLoader = props => {
           }
         }
       }
+      imageLogo: file(relativePath: { eq: "favicon.png" }) {
+        childImageSharp {
+          fluid(pngQuality: 100, maxWidth: 64) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `);
 

@@ -9,6 +9,7 @@ import SectionA from '../features/sectionA';
 import SectionB from '../features/sectionB';
 import SectionC from '../features/sectionC';
 import SectionD from '../features/sectionD';
+import Footer from '../features/footer';
 
 let theme = createMuiTheme({
   overrides: {
@@ -25,6 +26,12 @@ let theme = createMuiTheme({
       '@global': {
         '@font-face': orkney,
         backgroundColor: '#ffffff',
+      },
+    },
+    MuiListItem: {
+      gutters: {
+        paddingLeft: 0,
+        paddingRight: 0,
       },
     },
   },
@@ -59,6 +66,7 @@ let theme = createMuiTheme({
       fontSize: 18,
       fontWeight: 300,
     },
+    
     body2: {
       fontSize: 20,
       fontWeight: 400,
@@ -78,13 +86,14 @@ theme = responsiveFontSizes(theme);
 const IndexPage = () => {
   return (
     <ThemeProvider theme={theme}>
-      <SEO title="Enhance" />
+      <SEO title="Home" />
       <CssBaseline />
       <Header />
       <SectionA />
       <SectionB />
       <SectionC />
       <SectionD />
+      <Footer />
     </ThemeProvider>
   );
 };

@@ -23,24 +23,16 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     left: 0,
     right: 0,
-    padding: '74px 24px',
-    [theme.breakpoints.only('xs')]: {
-      padding: '74px 12px',
-    },
-    [theme.breakpoints.only('sm')]: {
-      padding: '48px',
+    padding: theme.spacing(9),
+
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(9, 3),
     },
   },
   fullHeightContainer: {
     height: '100%',
   },
-  backgroundImage: {
-    [theme.breakpoints.only('md')]: {
-      width: 'unset',
-    },
-    width: '100%',
-    height: '100%',
-  },
+
   divideBar: {
     minHeight: 120,
   },
@@ -76,19 +68,21 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 255,
     marginTop: theme.spacing(6),
   },
+  smContainer: {
+    paddingBottom: theme.spacing(5),
+  },
+  imageWrapper: {
+    height: 200,
+    [theme.breakpoints.down('md')]: {
+      height: 120,
+    },
+  },
 }));
 
 export default function SectionB() {
   const classes = useStyles();
   return (
     <section className={classes.section}>
-      {/* <Hidden smDown>
-        <img src={SectionCBackground} className={classes.backgroundImage} />
-      </Hidden>
-      <Hidden mdUp>
-        <img src={SectionCMobileBackground} className={classes.backgroundImage} />
-      </Hidden> */}
-
       <Container className={classes.container}>
         <Grid
           container
@@ -97,7 +91,6 @@ export default function SectionB() {
           alignItems="center"
           className={classes.fullHeightContainer}
         >
-          {/* <div className={classes.divideBar} /> */}
           <Box margin={6}>
             <Typography variant="h2" color="textPrimary" align="center" gutterBottom>
               Besoin d'aide pour vos projets ?
@@ -107,56 +100,147 @@ export default function SectionB() {
               et de services.
             </Typography>
           </Box>
-          <Grid container spacing={3}>
-            <Grid item xs={6} md={3}>
-              <ImageLoader imageName="sectionCImage1" className={classes.image1} />
-              <Box marginTop={6} marginBottom={10}>
-                <Typography variant="h2" color="textPrimary" align="center" gutterBottom>
-                  UX Strategy
-                </Typography>
-              </Box>
-              <Typography variant="subtitle1">
-                À travers différentes méthodes de recherche, notre équipe d'UX strategists a pour mission de croiser les
-                besoins business et utilisateurs, pour assurer et challenger votre vision stratégique.
-              </Typography>
+          <Hidden smDown>
+            <Grid container spacing={3}>
+              <Grid item md={3}>
+                <div className={classes.imageWrapper}>
+                  <ImageLoader imageName="sectionCImage1" className={classes.image1} />
+                </div>
+                <Box marginTop={7} marginBottom={7}>
+                  <Typography variant="h2" color="textPrimary" align="center">
+                    UX Strategy
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item md={3}>
+                <div className={classes.imageWrapper}>
+                  <ImageLoader imageName="sectionCImage2" className={classes.image2} />
+                </div>
+                <Box marginTop={7} marginBottom={7}>
+                  <Typography variant="h2" color="textPrimary" align="center">
+                    UX Design
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item md={3}>
+                <div className={classes.imageWrapper}>
+                  <ImageLoader imageName="sectionCImage3" className={classes.image3} />
+                </div>
+                <Box marginTop={7} marginBottom={7}>
+                  <Typography variant="h2" color="textPrimary" align="center">
+                    UI Design & <br /> Direction Artistique
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item md={3}>
+                <div className={classes.imageWrapper}>
+                  <ImageLoader imageName="sectionCImage4" className={classes.image4} />
+                </div>
+                <Box marginTop={7} marginBottom={7}>
+                  <Typography variant="h2" color="textPrimary" align="center">
+                    UX Writing
+                  </Typography>
+                </Box>
+              </Grid>
             </Grid>
-            <Grid item xs={6} md={3}>
-              <ImageLoader imageName="sectionCImage2" className={classes.image2} />
-              <Box marginTop={8} marginBottom={11}>
-                <Typography variant="h2" color="textPrimary" align="center" gutterBottom>
-                  UX Design
+            <Grid container spacing={3}>
+              <Grid item md={3}>
+                <Typography variant="subtitle1">
+                  À travers différentes méthodes de recherche, notre équipe d'UX strategists a pour mission de croiser
+                  les besoins business et utilisateurs, pour assurer et challenger votre vision stratégique.
                 </Typography>
-              </Box>
-              <Typography variant="subtitle1">
-                Nos UX designers, aussi appelés Designers de services, ont pour rôle de concevoir des produits digitaux
-                et phygitaux. Ils interviennent lors de la création, refonte ou optimisation de vos services.
-              </Typography>
-            </Grid>
-            <Grid item xs={6} md={3}>
-              <ImageLoader imageName="sectionCImage3" className={classes.image3} />
-              <Box marginTop={7} marginBottom={6}>
-                <Typography variant="h2" color="textPrimary" align="center" gutterBottom>
-                  UI Design & <br /> Direction Artistique
+              </Grid>
+              <Grid item md={3}>
+                <Typography variant="subtitle1">
+                  Nos UX designers, aussi appelés Designers de services, ont pour rôle de concevoir des produits
+                  digitaux et phygitaux. Ils interviennent lors de la création, refonte ou optimisation de vos services.
                 </Typography>
-              </Box>
-              <Typography variant="subtitle1">
-                Nos UI et DA sont responsables du design visuel et de l'engagement émotionnel de vos utilisateurs. Ils
-                respectent l’identité de votre marque et donnent vie à des produits agréables à utiliser.
-              </Typography>
-            </Grid>
-            <Grid item xs={6} md={3}>
-              <ImageLoader imageName="sectionCImage4" className={classes.image4} />
-              <Box marginTop={6} marginBottom={10}>
-                <Typography variant="h2" color="textPrimary" align="center" gutterBottom>
-                  UX Writing
+              </Grid>
+              <Grid item md={3}>
+                <Typography variant="subtitle1">
+                  Nos UI et DA sont responsables du design visuel et de l'engagement émotionnel de vos utilisateurs. Ils
+                  respectent l’identité de votre marque et donnent vie à des produits agréables à utiliser.
                 </Typography>
-              </Box>
-              <Typography variant="subtitle1">
-                L'UX Writer travaille main dans la main avec les UX/UI designers. C'est un professionnel en charge de la
-                rédaction du contenu pour le compte de l'entreprise au service de l'utilisateur.
-              </Typography>
+              </Grid>
+              <Grid item md={3}>
+                <Typography variant="subtitle1">
+                  L'UX Writer travaille main dans la main avec les UX/UI designers. C'est un professionnel en charge de
+                  la rédaction du contenu pour le compte de l'entreprise au service de l'utilisateur.
+                </Typography>
+              </Grid>
             </Grid>
-          </Grid>
+          </Hidden>
+          <Hidden mdUp>
+            <Grid container spacing={3} className={classes.smContainer}>
+              <Grid item xs={6}>
+                <div className={classes.imageWrapper}>
+                  <ImageLoader imageName="sectionCImage1" className={classes.image1} />
+                </div>
+                <Box marginTop={1} marginBottom={1}>
+                  <Typography variant="h2" color="textPrimary" align="center">
+                    UX Strategy
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={6}>
+                <div className={classes.imageWrapper}>
+                  <ImageLoader imageName="sectionCImage2" className={classes.image2} />
+                </div>
+                <Box marginTop={1} marginBottom={1}>
+                  <Typography variant="h2" color="textPrimary" align="center">
+                    UX Design
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="subtitle1">
+                  À travers différentes méthodes de recherche, notre équipe d'UX strategists a pour mission de croiser
+                  les besoins business et utilisateurs, pour assurer et challenger votre vision stratégique.
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="subtitle1">
+                  Nos UX designers, aussi appelés Designers de services, ont pour rôle de concevoir des produits
+                  digitaux et phygitaux. Ils interviennent lors de la création, refonte ou optimisation de vos services.
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container spacing={3} className={classes.smContainer}>
+              <Grid item xs={6}>
+                <div className={classes.imageWrapper}>
+                  <ImageLoader imageName="sectionCImage2" className={classes.image2} />
+                </div>
+                <Box marginTop={1} marginBottom={1}>
+                  <Typography variant="h2" color="textPrimary" align="center">
+                    UX Design
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={6}>
+                <div className={classes.imageWrapper}>
+                  <ImageLoader imageName="sectionCImage1" className={classes.image1} />
+                </div>
+                <Box marginTop={1} marginBottom={1}>
+                  <Typography variant="h2" color="textPrimary" align="center">
+                    UX Strategy
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="subtitle1">
+                  Nos UX designers, aussi appelés Designers de services, ont pour rôle de concevoir des produits
+                  digitaux et phygitaux. Ils interviennent lors de la création, refonte ou optimisation de vos services.
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="subtitle1">
+                  À travers différentes méthodes de recherche, notre équipe d'UX strategists a pour mission de croiser
+                  les besoins business et utilisateurs, pour assurer et challenger votre vision stratégique.
+                </Typography>
+              </Grid>
+            </Grid>
+          </Hidden>
+
           <Button variant="contained" color="primary" disableElevation fullWidth className={classes.button}>
             Contactez-nous
           </Button>

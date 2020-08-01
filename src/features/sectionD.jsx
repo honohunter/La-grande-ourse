@@ -18,14 +18,16 @@ import ImageLoader from '../components/imagesLoader';
 const useStyles = makeStyles(theme => ({
   section: {
     position: 'relative',
-    height: 500,
+    [theme.breakpoints.up('sm')]: {
+      height: 500,
+    },
   },
   container: {
     height: '100%',
+    padding: theme.spacing(10, 3),
   },
   gridContainer: {
     height: '100%',
-    padding: '50px 0',
   },
   backgroundImage: {
     width: 451,
