@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+    <g fill="#8E93A1" fill-rule="evenodd">
+        <path fill-rule="nonzero" d="M10.985 2C6.015 2 2 6.01 2 10.985c0 4.974 4.01 8.984 8.985 8.984 4.974 0 8.984-4.01 8.984-8.984C19.97 6.01 15.954 2 10.985 2zm0 16.768c-4.312 0-7.784-3.471-7.784-7.783S6.673 3.2 10.985 3.2c4.312 0 7.783 3.472 7.783 7.784 0 4.312-3.471 7.783-7.783 7.783z"/>
+        <text font-family="Orkney-Regular, Orkney" font-size="12" letter-spacing=".138">
+            <tspan x="8.071" y="16">?</tspan>
+        </text>
+    </g>
+</svg>

@@ -78,6 +78,11 @@ let theme = createMuiTheme({
       color: '#505361',
       lineHeight: 1.5,
     },
+    subtitle2: {
+      fontSize: 18,
+      fontWeight: 400,
+      color: '#505361',
+    },
   },
 });
 

@@ -35,12 +35,21 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('lg')]: {
       padding: '0 100px',
     },
+    [theme.breakpoints.down('md')]: {
+      padding: theme.spacing(0, 4),
+    },
   },
   logoWrapper: {
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(6, 0),
+    },
     padding: theme.spacing(8, 0),
   },
   logo: {
     fill: '#ffffff',
+    [theme.breakpoints.down('sm')]: {
+      width: 200,
+    },
     width: 300,
   },
   textSection: {
@@ -68,6 +77,9 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     paddingBottom: theme.spacing(2),
   },
+  iconsSection: {
+    marginBottom: theme.spacing(3),
+  },
   inputLabelPropsFocused: {
     color: 'transparent !important',
   },
@@ -83,6 +95,7 @@ const useStyles = makeStyles(theme => ({
   },
   formInput: {
     display: 'flex',
+    marginBottom: 10,
   },
 }));
 
@@ -177,7 +190,9 @@ export default function Footer() {
           <Grid item xs={12} md={3}>
             <List>
               <ListItem>
-                <Typography variant="h3">Suivez-nous</Typography>
+                <Typography variant="h3" gutterBottom>
+                  <Box fontWeight={600}>Suivez-nous</Box>
+                </Typography>
               </ListItem>
               <div className={classes.iconsSection}>
                 <LinkedInIcon className={classes.costumeIcon} />
@@ -188,7 +203,9 @@ export default function Footer() {
                 <YoutubeIcon className={classes.costumeIcon} />
               </div>
               <ListItem>
-                <Typography variant="h3">S’inscrire à la newsletter</Typography>
+                <Typography variant="h3" gutterBottom>
+                  <Box fontWeight={600}>S’inscrire à la newsletter</Box>
+                </Typography>
               </ListItem>
               <form>
                 <div className={classes.formInput}>

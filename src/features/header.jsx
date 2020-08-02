@@ -15,11 +15,11 @@ import {
   Link,
   Container,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
 
 import Logo from '../assets/images/logo-la-grande-ourse.inline.svg';
 import MobileMenuBackground from '../assets/images/mobileMenu-background.svg';
+import MenuIcon from '../assets/icons/menuIcon.inline.svg';
+import CloseIcon from '../assets/icons/closeIcon.inline.svg';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,11 +32,10 @@ const useStyles = makeStyles(theme => ({
     },
     padding: 0,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+
   sectionL: {
     flexGrow: 1,
+    padding: theme.spacing(3),
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       alignItems: 'center',
@@ -66,20 +65,22 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     zIndex: 100,
     overflow: 'hidden',
+    backgroundImage: `url(${MobileMenuBackground})`,
+    backgroundSize: 'cover',
   },
   mobileMenuPanel: {
     padding: theme.spacing(0, 5, 5, 5),
   },
   iconButton: {
+    stroke: '#505361',
+  },
+  menuButton: {
     marginLeft: 'auto',
+    marginRight: theme.spacing(2),
   },
   activeLink: {
     fontWeight: 500,
     borderBottom: '3px solid #aec9ff',
-  },
-  mobileMenuBackground: {
-    position: 'absolute',
-    width: '100%',
   },
 }));
 
@@ -121,11 +122,10 @@ export default function Header() {
       {isMobileMenuOpen ? (
         <Hidden lgUp>
           <div className={classes.mobileMenu}>
-            <MobileMenuBackground className={classes.mobileMenuBackground} />
             <List component="nav">
               <ListItem>
-                <IconButton className={classes.iconButton} onClick={handleMenuButtonClick}>
-                  <CloseIcon />
+                <IconButton className={classes.menuButton} onClick={handleMenuButtonClick}>
+                  <CloseIcon className={classes.iconButton} />
                 </IconButton>
               </ListItem>
               <div className={classes.mobileMenuPanel}>
@@ -180,13 +180,7 @@ export default function Header() {
                 </div>
               </Hidden>
               <Hidden mdUp>
-                <IconButton
-                  edge="start"
-                  className={classes.menuButton}
-                  color="inherit"
-                  aria-label="menu"
-                  onClick={handleMenuButtonClick}
-                >
+                <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuButtonClick}>
                   <MenuIcon />
                 </IconButton>
               </Hidden>
