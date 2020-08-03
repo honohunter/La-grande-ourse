@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#ebf0fb',
     position: 'absolute',
     width: '100%',
-    zIndex: 100,
+    zIndex: 1000,
     overflow: 'hidden',
     backgroundImage: `url(${MobileMenuBackground})`,
     backgroundSize: 'cover',
@@ -119,7 +119,7 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      {isMobileMenuOpen ? (
+      {isMobileMenuOpen && (
         <Hidden lgUp>
           <div className={classes.mobileMenu}>
             <List component="nav">
@@ -149,45 +149,44 @@ export default function Header() {
             </List>
           </div>
         </Hidden>
-      ) : (
-        <Container>
-          <AppBar position="static" color="transparent" elevation={0}>
-            <Toolbar className={classes.toolbar}>
-              <div className={classes.sectionL}>
-                <Logo className={classes.logo} />
-              </div>
-              <Hidden smDown>
-                <div className={classes.sectionR}>
-                  {pages.map((page, index) => (
-                    <ButtonBase
-                      key={index}
-                      onClick={() => {
-                        handleNavigation(page);
-                      }}
-                    >
-                      <Typography
-                        variant="h3"
-                        classes={{ h3: classes.h3 }}
-                        className={clsx(activeLink === page.link ? classes.activeLink : false)}
-                      >
-                        {page.text}
-                      </Typography>
-                    </ButtonBase>
-                  ))}
-                  <Button color="primary" variant="contained" size="large" disableElevation>
-                    Prendre contact
-                  </Button>
-                </div>
-              </Hidden>
-              <Hidden mdUp>
-                <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuButtonClick}>
-                  <MenuIcon />
-                </IconButton>
-              </Hidden>
-            </Toolbar>
-          </AppBar>
-        </Container>
       )}
+      <Container>
+        <AppBar position="static" color="transparent" elevation={0}>
+          <Toolbar className={classes.toolbar}>
+            <div className={classes.sectionL}>
+              <Logo className={classes.logo} />
+            </div>
+            <Hidden smDown>
+              <div className={classes.sectionR}>
+                {pages.map((page, index) => (
+                  <ButtonBase
+                    key={index}
+                    onClick={() => {
+                      handleNavigation(page);
+                    }}
+                  >
+                    <Typography
+                      variant="h3"
+                      classes={{ h3: classes.h3 }}
+                      className={clsx(activeLink === page.link ? classes.activeLink : false)}
+                    >
+                      {page.text}
+                    </Typography>
+                  </ButtonBase>
+                ))}
+                <Button color="primary" variant="contained" size="large" disableElevation>
+                  Prendre contact
+                </Button>
+              </div>
+            </Hidden>
+            <Hidden mdUp>
+              <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuButtonClick}>
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
+          </Toolbar>
+        </AppBar>
+      </Container>
     </div>
   );
 }

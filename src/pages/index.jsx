@@ -20,6 +20,9 @@ let theme = createMuiTheme({
       sizeLarge: {
         height: 43,
       },
+      label: {
+        marginTop: 5,
+      },
     },
 
     MuiCssBaseline: {
@@ -34,13 +37,22 @@ let theme = createMuiTheme({
         paddingRight: 0,
       },
     },
+    MuiOutlinedInput: {
+      input: {
+        backgroundColor: '#ffffff',
+      },
+    },
   },
   palette: {
     primary: {
       main: '#2e5bcc',
     },
+    secondary: {
+      main: '#fe5071',
+    },
     text: {
       primary: '#002aaf',
+      secondary: '#ffffff',
     },
     background: {
       default: '#ffffff',
@@ -66,7 +78,7 @@ let theme = createMuiTheme({
       fontSize: 18,
       fontWeight: 300,
     },
-    
+
     body2: {
       fontSize: 20,
       fontWeight: 400,

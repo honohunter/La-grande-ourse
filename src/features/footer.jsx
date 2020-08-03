@@ -84,7 +84,6 @@ const useStyles = makeStyles(theme => ({
     color: 'transparent !important',
   },
   inputProps: {
-    backgroundColor: '#ffffff !important',
     color: '#000000',
   },
   button: {
