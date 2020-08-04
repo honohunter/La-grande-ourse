@@ -1,19 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
-import {
-  makeStyles,
-  Typography,
-  Hidden,
-  Container,
-  Grid,
-  Box,
-  Paper,
-  Button,
-  TextField,
-  Card,
-  CardHeader,
-  CardContent,
-} from '@material-ui/core';
+import { makeStyles, Typography, Hidden, Container, Grid, Box, Paper, Button, TextField } from '@material-ui/core';
 
 import ImageLoader from '../components/imagesLoader';
 import Slider from '../components/slider';
@@ -25,6 +12,8 @@ import TooltipIcon from '../assets/icons/tooltipIcon.inline.svg';
 import Image1 from '../assets/images/sectionB-image-1.inline.svg';
 import Image2 from '../assets/images/sectionB-image-2.inline.svg';
 import Image3 from '../assets/images/sectionB-image-3.inline.svg';
+import Image4 from '../assets/images/sectionB-image-4.inline.svg';
+import Image6 from '../assets/images/sectionB-image-6.inline.svg';
 
 const useStyles = makeStyles(theme => ({
   section: {
@@ -45,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     zIndex: 100,
     [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(5,0),
+      padding: theme.spacing(5, 0),
     },
     [theme.breakpoints.only('xs')]: {
       padding: theme.spacing(0),
@@ -91,6 +80,16 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(5, 0),
     },
   },
+  gridSpacing2: {
+    padding: theme.spacing(2),
+    flexGrow: 1,
+    [theme.breakpoints.only('xs')]: {
+      padding: theme.spacing(1),
+    },
+  },
+  image: {
+    width: 193,
+  },
   card: {
     borderRadius: 25,
     overflow: 'hidden',
@@ -123,7 +122,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const marks = [
+const marksA = [
   {
     value: 0,
     label: '',
@@ -203,6 +202,83 @@ const marks = [
     value: 15,
     label: '',
     text: '1 jour',
+  },
+];
+const marksB = [
+  {
+    value: 0,
+    label: '',
+    text: '10 min',
+  },
+  {
+    value: 1,
+    label: '',
+    text: '20 min',
+  },
+  {
+    value: 2,
+    label: '',
+    text: '30 min',
+  },
+  {
+    value: 3,
+    label: '',
+    text: '40 min',
+  },
+  {
+    value: 4,
+    label: '',
+    text: '50 min',
+  },
+  {
+    value: 5,
+    label: '',
+    text: '1h',
+  },
+  {
+    value: 6,
+    label: '',
+    text: '1h30',
+  },
+  {
+    value: 7,
+    label: '',
+    text: '2h',
+  },
+  {
+    value: 8,
+    label: '',
+    text: '3h',
+  },
+  {
+    value: 9,
+    label: '',
+    text: '4h',
+  },
+  {
+    value: 10,
+    label: '',
+    text: '1j',
+  },
+  {
+    value: 11,
+    label: '',
+    text: '2j',
+  },
+  {
+    value: 12,
+    label: '',
+    text: '1 semaine',
+  },
+  {
+    value: 13,
+    label: '',
+    text: '2 semaine',
+  },
+  {
+    value: 14,
+    label: '',
+    text: '3 semaine',
   },
 ];
 const marks2 = [
@@ -295,7 +371,7 @@ const marks3 = [
   },
   {
     value: 5,
-    label: "",
+    label: '',
     text: "Aujourd'hui : No comment",
   },
 ];
@@ -311,6 +387,22 @@ const longText = [
 
 export default function SectionB() {
   const classes = useStyles();
+  const [guided, setGuided] = useState(true);
+  const [sessionPlace, setSessionPlace] = useState(1);
+
+  const handelButtonClick = element => {
+    if (element.currentTarget.id === 'yes-button') {
+      setGuided(true);
+    } else {
+      setGuided(false);
+    }
+  };
+
+  const handelCardClick = element => {
+    console.log(element.currentTarget.value);
+    setSessionPlace(element.currentTarget.value);
+  };
+
   return (
     <section className={classes.section}>
       <Hidden smDown>
@@ -333,10 +425,26 @@ export default function SectionB() {
                 </Tooltip>
               </Typography>
               <div className={classes.buttonSection}>
-                <Button variant="contained" size="large" color="primary" disableElevation fullWidth>
+                <Button
+                  id="yes-button"
+                  variant={guided ? 'contained' : 'outlined'}
+                  size="large"
+                  color="primary"
+                  disableElevation
+                  fullWidth
+                  onClick={handelButtonClick}
+                >
                   Oui
                 </Button>
-                <Button variant="outlined" size="large" color="primary" disableElevation fullWidth>
+                <Button
+                  id="no-button"
+                  variant={!guided ? 'contained' : 'outlined'}
+                  size="large"
+                  color="primary"
+                  disableElevation
+                  fullWidth
+                  onClick={handelButtonClick}
+                >
                   Non
                 </Button>
               </div>
@@ -346,28 +454,56 @@ export default function SectionB() {
                   <TooltipIcon className={classes.tooltipIcon} />
                 </Tooltip>
               </Typography>
-              <Grid container direction="row" alignItems="center" justify="space-evenly" wrap="nowrap" spacing={1}>
-                <Grid item>
-                  <ButtonCard active>
-                    <Image1 />
-                    <div>Le participant et l'animateur sont à distance</div>
-                    <div>Visio, téléphone...</div>
-                  </ButtonCard>
-                </Grid>
-                <Grid item>
-                  <ButtonCard>
-                    <Image2 />
-                    <div>Le participant se déplace chez l'animateur</div>
-                    <div>Vos bureaux, labo...</div>
-                  </ButtonCard>
-                </Grid>
-                <Grid item>
-                  <ButtonCard>
-                    <Image3 />
-                    <div>L'animateur se déplace chez le participant</div>
-                    <div>Chez lui, à son bureau...</div>
-                  </ButtonCard>
-                </Grid>
+              <Grid container direction="row" alignItems="center" justify="space-evenly" wrap="nowrap">
+                {guided ? (
+                  <>
+                    <Grid item className={classes.gridSpacing2}>
+                      <ButtonCard value={1} onClick={handelCardClick} active={sessionPlace == 1}>
+                        <Image1 />
+                        <div>Le participant et l'animateur sont à distance</div>
+                        <div>Visio, téléphone...</div>
+                      </ButtonCard>
+                    </Grid>
+                    <Grid item className={classes.gridSpacing2}>
+                      <ButtonCard value={2} onClick={handelCardClick} active={sessionPlace == 2}>
+                        <Image2 />
+                        <div>Le participant se déplace chez l'animateur</div>
+                        <div>Vos bureaux, labo...</div>
+                      </ButtonCard>
+                    </Grid>
+                    <Grid item className={classes.gridSpacing2}>
+                      <ButtonCard value={3} onClick={handelCardClick} active={sessionPlace == 3}>
+                        <Image3 />
+                        <div>L'animateur se déplace chez le participant</div>
+                        <div>Chez lui, à son bureau...</div>
+                      </ButtonCard>
+                    </Grid>
+                  </>
+                ) : (
+                  <>
+                    <Grid item className={classes.gridSpacing2}>
+                      <ButtonCard value={1} onClick={handelCardClick} active={sessionPlace == 1}>
+                        <Image4 />
+                        <div>Session automatisée</div>
+                        <div>Guidée par un système...</div>
+                      </ButtonCard>
+                    </Grid>
+                    <Grid item className={classes.gridSpacing2}>
+                      <ButtonCard value={2} onClick={handelCardClick} active={sessionPlace == 2}>
+                        <Image4 />
+                        <div>Questionnaire</div>
+                        <div>Formulaire</div>
+                      </ButtonCard>
+                    </Grid>
+                    <Grid item className={classes.gridSpacing2}>
+                      <ButtonCard value={3} onClick={handelCardClick} active={sessionPlace == 3}>
+                        <Image6 />
+                        <div>Exercice en ligne</div>
+                        <div>Trie de carte...</div>
+                      </ButtonCard>
+                    </Grid>
+                  </>
+                )}
               </Grid>
               <Typography variant="subtitle2" className={classes.textWithIcon}>
                 Combien de temps durera la session ?
@@ -375,7 +511,11 @@ export default function SectionB() {
                   <TooltipIcon className={classes.tooltipIcon} />
                 </Tooltip>
               </Typography>
-              <Slider min={0} max={marks.length - 1} defaultValue={6} step={null} marks={marks} />
+              {guided ? (
+                <Slider min={0} max={marksA.length - 1} defaultValue={6} step={null} marks={marksA} />
+              ) : (
+                <Slider min={0} max={marksB.length - 1} defaultValue={6} step={null} marks={marksB} />
+              )}
               <Typography variant="subtitle2" className={classes.textWithIcon}>
                 Typologie des participants
                 <Tooltip title={longText[3]}>
@@ -399,7 +539,7 @@ export default function SectionB() {
               <TextField defaultValue={8} variant="outlined" size="small" type="number" className={classes.textField} />
             </Paper>
           </Grid>
-          <Grid item xs={12} md={4}  className={classes.gridSpacing}>
+          <Grid item xs={12} md={4} className={classes.gridSpacing}>
             <Paper elevation={6} className={classes.card}>
               <div className={classes.cardHeader}>
                 <Typography variant="body2" align="center" color="textSecondary">

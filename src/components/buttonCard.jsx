@@ -76,11 +76,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ButtonCard(props) {
-  const { children, active } = props;
+  const { children, active, value, onClick } = props;
   const classes = useStyles();
   return (
     <StyledPaper className={clsx(active && classes.active)} elevation={3}>
-      <StyledButtonBase className={clsx(active && classes.activeButton)}>
+      <StyledButtonBase className={clsx(active && classes.activeButton)} onClick={onClick} value={value}>
         <ImageWrapper>{children[0]}</ImageWrapper>
         <div className={classes.textSection}>
           <Typography component="div" gutterBottom className={classes.text}>
