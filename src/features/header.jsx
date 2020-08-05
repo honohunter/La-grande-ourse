@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 5, 5, 5),
   },
   iconButton: {
-    stroke: '#505361',
+    // marginLeft: 30,
   },
   menuButton: {
     marginLeft: 'auto',
@@ -153,6 +153,17 @@ export default function Header() {
       <Container>
         <AppBar position="static" color="transparent" elevation={0}>
           <Toolbar className={classes.toolbar}>
+            <Hidden mdUp>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                className={classes.iconButton}
+                onClick={handleMenuButtonClick}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
             <div className={classes.sectionL}>
               <Logo className={classes.logo} />
             </div>
@@ -178,11 +189,6 @@ export default function Header() {
                   Prendre contact
                 </Button>
               </div>
-            </Hidden>
-            <Hidden mdUp>
-              <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuButtonClick}>
-                <MenuIcon />
-              </IconButton>
             </Hidden>
           </Toolbar>
         </AppBar>

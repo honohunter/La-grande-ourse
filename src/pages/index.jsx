@@ -1,5 +1,5 @@
 import React from 'react';
-import { createMuiTheme, responsiveFontSizes, ThemeProvider, CssBaseline } from '@material-ui/core';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider, CssBaseline, Container } from '@material-ui/core';
 
 import orkney from '../assets/fonts';
 
@@ -38,7 +38,7 @@ let theme = createMuiTheme({
       },
     },
     MuiOutlinedInput: {
-      input: {
+      root: {
         backgroundColor: '#ffffff',
       },
     },
@@ -105,12 +105,14 @@ const IndexPage = () => {
     <ThemeProvider theme={theme}>
       <SEO title="Home" />
       <CssBaseline />
+      {/* <Container> */}
       <Header />
       <SectionA />
       <SectionB />
       <SectionC />
       <SectionD />
       <Footer />
+      {/* </Container> */}
     </ThemeProvider>
   );
 };

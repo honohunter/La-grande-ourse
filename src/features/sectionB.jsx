@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     [theme.breakpoints.only('xs')]: {
-      padding: theme.spacing(6, 2),
+      padding: theme.spacing(6, 3),
     },
     padding: theme.spacing(6),
     borderRadius: 10,
@@ -77,25 +77,28 @@ const useStyles = makeStyles(theme => ({
   gridSpacing: {
     padding: theme.spacing(5),
     [theme.breakpoints.only('xs')]: {
-      padding: theme.spacing(5, 0),
+      padding: theme.spacing(5, 1),
     },
   },
   gridSpacing2: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(0, 4),
     flexGrow: 1,
     [theme.breakpoints.only('xs')]: {
-      padding: theme.spacing(1),
+      padding: theme.spacing(0, 1),
     },
   },
   image: {
-    width: 193,
+    [theme.breakpoints.only('xs')]: {
+      minHeight: 70,
+    },
+    // height: 130,
   },
   card: {
     borderRadius: 25,
     overflow: 'hidden',
   },
   cardHeader: {
-    padding: theme.spacing(3, 8),
+    padding: theme.spacing(3, 0),
     backgroundColor: theme.palette.secondary.main,
   },
   cardBody: {
@@ -105,10 +108,11 @@ const useStyles = makeStyles(theme => ({
   outputSection: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
   },
   outputText: {
     width: 160,
+    marginRight: 20,
     '& .MuiOutlinedInput-root': {
       borderRadius: 10,
       overflow: 'hidden',
@@ -120,86 +124,85 @@ const useStyles = makeStyles(theme => ({
       marginBottom: -5,
     },
   },
+  buttonWrapper: {
+    margin: 'auto',
+    maxWidth: 320,
+  },
 }));
 
 const marksA = [
   {
     value: 0,
     label: '',
-    text: '5 min',
+    text: '10 min',
   },
   {
     value: 1,
     label: '',
-    text: '10 min',
+    text: '20 min',
   },
   {
     value: 2,
     label: '',
-    text: '20 min',
+    text: '30 min',
   },
   {
     value: 3,
     label: '',
-    text: '30 min',
+    text: '40 min',
   },
   {
     value: 4,
     label: '',
-    text: '40 min',
+    text: '50 min',
   },
   {
     value: 5,
     label: '',
-    text: '50 min',
+    text: '1h',
   },
   {
     value: 6,
     label: '',
-    text: '1h',
+    text: '1h30',
   },
   {
     value: 7,
     label: '',
-    text: '1h30',
+    text: '2h',
   },
   {
     value: 8,
     label: '',
-    text: '2h',
+    text: '2h30',
   },
   {
     value: 9,
     label: '',
-    text: '2h30',
+    text: '3h',
   },
   {
     value: 10,
     label: '',
-    text: '3h',
+    text: '3h30',
   },
   {
     value: 11,
     label: '',
-    text: '3h30',
+    text: '4h',
   },
   {
     value: 12,
     label: '',
-    text: '4h',
+    text: '4h30',
   },
   {
     value: 13,
     label: '',
-    text: '4h30',
-  },
-  {
-    value: 14,
-    label: '',
     text: '5h',
   },
   {
-    value: 15,
+    value: 14,
     label: '',
     text: '1 jour',
   },
@@ -273,12 +276,12 @@ const marksB = [
   {
     value: 13,
     label: '',
-    text: '2 semaine',
+    text: '2 semaines',
   },
   {
     value: 14,
     label: '',
-    text: '3 semaine',
+    text: '3 semaines',
   },
 ];
 const marks2 = [
@@ -457,23 +460,23 @@ export default function SectionB() {
               <Grid container direction="row" alignItems="center" justify="space-evenly" wrap="nowrap">
                 {guided ? (
                   <>
-                    <Grid item className={classes.gridSpacing2}>
+                    <Grid item>
                       <ButtonCard value={1} onClick={handelCardClick} active={sessionPlace == 1}>
-                        <Image1 />
+                        <Image1 className={classes.image} />
                         <div>Le participant et l'animateur sont à distance</div>
                         <div>Visio, téléphone...</div>
                       </ButtonCard>
                     </Grid>
                     <Grid item className={classes.gridSpacing2}>
                       <ButtonCard value={2} onClick={handelCardClick} active={sessionPlace == 2}>
-                        <Image2 />
+                        <Image2 className={classes.image} />
                         <div>Le participant se déplace chez l'animateur</div>
                         <div>Vos bureaux, labo...</div>
                       </ButtonCard>
                     </Grid>
-                    <Grid item className={classes.gridSpacing2}>
+                    <Grid item>
                       <ButtonCard value={3} onClick={handelCardClick} active={sessionPlace == 3}>
-                        <Image3 />
+                        <Image3 className={classes.image} />
                         <div>L'animateur se déplace chez le participant</div>
                         <div>Chez lui, à son bureau...</div>
                       </ButtonCard>
@@ -481,23 +484,23 @@ export default function SectionB() {
                   </>
                 ) : (
                   <>
-                    <Grid item className={classes.gridSpacing2}>
+                    <Grid item>
                       <ButtonCard value={1} onClick={handelCardClick} active={sessionPlace == 1}>
-                        <Image4 />
+                        <Image4 className={classes.image} />
                         <div>Session automatisée</div>
                         <div>Guidée par un système...</div>
                       </ButtonCard>
                     </Grid>
                     <Grid item className={classes.gridSpacing2}>
                       <ButtonCard value={2} onClick={handelCardClick} active={sessionPlace == 2}>
-                        <Image4 />
+                        <Image4 className={classes.image} />
                         <div>Questionnaire</div>
                         <div>Formulaire</div>
                       </ButtonCard>
                     </Grid>
-                    <Grid item className={classes.gridSpacing2}>
+                    <Grid item>
                       <ButtonCard value={3} onClick={handelCardClick} active={sessionPlace == 3}>
-                        <Image6 />
+                        <Image6 className={classes.image} />
                         <div>Exercice en ligne</div>
                         <div>Trie de carte...</div>
                       </ButtonCard>
@@ -537,6 +540,13 @@ export default function SectionB() {
                 </Tooltip>
               </Typography>
               <TextField defaultValue={8} variant="outlined" size="small" type="number" className={classes.textField} />
+              <Hidden mdUp>
+                <div className={classes.buttonWrapper}>
+                  <Button variant="contained" color="primary" disableElevation fullWidth>
+                    Calculer le montant
+                  </Button>
+                </div>
+              </Hidden>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4} className={classes.gridSpacing}>

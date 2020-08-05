@@ -4,22 +4,13 @@ import { withStyles, ButtonBase, Paper, Box, Typography, makeStyles } from '@mat
 
 const StyledPaper = withStyles(theme => ({
   root: {
-    [theme.breakpoints.only('md')]: {
-      //   width: 170,
-      //   height: 271,
-    },
-    [theme.breakpoints.only('sm')]: {
-      //   width: 130,
-      //   height: 271,
-    },
-    [theme.breakpoints.only('xs')]: {
-      //   width: 90,
-      //   height: "unset",
-    },
     maxWidth: 224,
     height: 271,
     borderRadius: 12,
     overflow: 'hidden',
+    [theme.breakpoints.only('xs')]: {
+      // height: 232,
+    },
   },
 }))(Paper);
 
@@ -51,10 +42,10 @@ const useStyles = makeStyles(theme => ({
   active: {
     border: '1px solid',
     borderColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   activeButton: {
     color: '#ffffff',
-    backgroundColor: theme.palette.primary.main,
   },
   text: {
     fontSize: 14,
@@ -71,7 +62,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   textSection: {
-    margin: 'auto 10px',
+    margin: 'auto',
+    padding: 7,
   },
 }));
 

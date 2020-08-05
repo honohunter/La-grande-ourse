@@ -33,6 +33,10 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
   },
 
+  textSection: {
+    margin: theme.spacing(6, 3),
+  },
+
   divideBar: {
     minHeight: 120,
   },
@@ -67,6 +71,9 @@ const useStyles = makeStyles(theme => ({
   button: {
     maxWidth: 255,
     marginTop: theme.spacing(6),
+    [theme.breakpoints.only('xs')]: {
+      marginTop: theme.spacing(0),
+    },
   },
   smContainer: {
     paddingBottom: theme.spacing(5),
@@ -91,15 +98,17 @@ export default function SectionB() {
           alignItems="center"
           className={classes.fullHeightContainer}
         >
-          <Box margin={6}>
-            <Typography variant="h2" color="textPrimary" align="center" gutterBottom>
-              Besoin d'aide pour vos projets ?
-            </Typography>
+          <div className={classes.textSection}>
+            <Box marginBottom={2.5}>
+              <Typography variant="h2" color="textPrimary" align="center">
+                Besoin d'aide pour vos projets ?
+              </Typography>
+            </Box>
             <Typography variant="h3" align="center">
               Grâce à nos 4 pôles d'expertises, nos créateurs d'expériences assurent la conception globale de produits
               et de services.
             </Typography>
-          </Box>
+          </div>
           <Hidden smDown>
             <Grid container spacing={3}>
               <Grid item md={3}>

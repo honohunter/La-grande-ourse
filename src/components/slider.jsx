@@ -5,16 +5,18 @@ import { withStyles, makeStyles, Slider, Tooltip, Box } from '@material-ui/core'
 
 const StyledSlider = withStyles(theme => ({
   root: {
-    height: 13,
+    height: 14,
     [theme.breakpoints.only('xs')]: {
       height: 9,
     },
+    display: 'flex',
+    alignItems: 'center',
   },
   rail: {
     [theme.breakpoints.only('xs')]: {
       height: 9,
     },
-    height: 13,
+    height: 14,
     borderRadius: 5.5,
     paddingRight: 20,
     marginLeft: -7,
@@ -25,7 +27,7 @@ const StyledSlider = withStyles(theme => ({
     [theme.breakpoints.only('xs')]: {
       height: 9,
     },
-    height: 13,
+    height: 14,
     borderRadius: 5.5,
     marginLeft: -7,
     paddingRight: 7,
@@ -39,7 +41,6 @@ const StyledSlider = withStyles(theme => ({
     height: 8,
     width: 8,
     borderRadius: '50%',
-    top: 16,
   },
   markActive: {
     opacity: 0.5,
@@ -50,9 +51,7 @@ const StyledSlider = withStyles(theme => ({
       height: 28,
       width: 28,
       border: '5px solid white',
-      top: 8,
     },
-    top: 6,
     height: 37,
     width: 37,
     marginLeft: -13,

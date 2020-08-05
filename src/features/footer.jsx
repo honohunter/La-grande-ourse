@@ -14,12 +14,13 @@ import {
 } from '@material-ui/core';
 
 import Logo from '../assets/images/logo-la-grande-ourse.inline.svg';
-import LinkedInIcon from '../assets/icons/linkedIn.inline.svg';
-import FacebookIcon from '../assets/icons/facebook.inline.svg';
-import InstagramIcon from '../assets/icons/instagram.inline.svg';
-import TwitterIcon from '../assets/icons/twitter.inline.svg';
-import PatreonIcon from '../assets/icons/patreon.inline.svg';
-import YoutubeIcon from '../assets/icons/youtube.inline.svg';
+import LinkedInIcon from '../assets/icons/linkedIn.square.inline.svg';
+import FacebookIcon from '../assets/icons/facebook.square.inline.svg';
+import InstagramIcon from '../assets/icons/instagram.square.inline.svg';
+import TwitterIcon from '../assets/icons/twitter.square.inline.svg';
+import PatreonIcon from '../assets/icons/patreon.square.inline.svg';
+import YoutubeIcon from '../assets/icons/youtube.square.inline.svg';
+
 import HeartIcon from '../assets/icons/heart.inline.svg';
 
 import ImagesLoader from '../components/imagesLoader';
@@ -36,7 +37,7 @@ const useStyles = makeStyles(theme => ({
       padding: '0 100px',
     },
     [theme.breakpoints.down('md')]: {
-      padding: theme.spacing(0, 4),
+      padding: theme.spacing(0, 3),
     },
   },
   logoWrapper: {
@@ -55,10 +56,16 @@ const useStyles = makeStyles(theme => ({
   textSection: {
     display: 'flex',
     justifyContent: 'center',
-    padding: theme.spacing(5),
-    '& > div': {
+    padding: theme.spacing(5, 0),
+    '& > *': {
       fontWeight: 600,
       marginRight: theme.spacing(4),
+    },
+    [theme.breakpoints.only('xs')]: {
+      flexDirection: 'column',
+      '& > *': {
+        margin: theme.spacing(1.5, 0),
+      },
     },
   },
   bottomTextSection: {
@@ -194,10 +201,10 @@ export default function Footer() {
                 </Typography>
               </ListItem>
               <div className={classes.iconsSection}>
-                <LinkedInIcon className={classes.costumeIcon} />
                 <FacebookIcon className={classes.costumeIcon} />
                 <InstagramIcon className={classes.costumeIcon} />
                 <TwitterIcon className={classes.costumeIcon} />
+                <LinkedInIcon className={classes.costumeIcon} />
                 <PatreonIcon className={classes.costumeIcon} />
                 <YoutubeIcon className={classes.costumeIcon} />
               </div>

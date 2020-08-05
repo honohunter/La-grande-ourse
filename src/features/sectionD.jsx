@@ -38,21 +38,25 @@ const useStyles = makeStyles(theme => ({
     margin: '0 5px',
     color: '#8e93a1',
   },
-  costumeIcon: {
+  customIcon: {
     marginRight: 10,
+    width: '100%',
   },
   iconsSection: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    margin: theme.spacing(3, 0),
   },
   textSection: {
-    height: 300,
     margin: 'auto',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
+  },
+  button: {
+    margin: theme.spacing(4, 0),
   },
 }));
 
@@ -73,7 +77,7 @@ export default function SectionB() {
                     <Box fontWeight={300}>Nous serons ravis d’y répondre.</Box>
                   </Typography>
                 </div>
-                <Button variant="contained" color="primary" disableElevation>
+                <Button variant="contained" color="primary" disableElevation className={classes.button}>
                   Entrons en contact
                 </Button>
                 <div>
@@ -92,12 +96,12 @@ export default function SectionB() {
                   </Typography>
                 </div>
                 <div className={classes.iconsSection}>
-                  <LinkedInIcon className={classes.costumeIcon} />
-                  <FacebookIcon className={classes.costumeIcon} />
-                  <InstagramIcon className={classes.costumeIcon} />
-                  <TwitterIcon className={classes.costumeIcon} />
-                  <PatreonIcon className={classes.costumeIcon} />
-                  <YoutubeIcon className={classes.costumeIcon} />
+                  <LinkedInIcon className={classes.customIcon} />
+                  <FacebookIcon className={classes.customIcon} />
+                  <InstagramIcon className={classes.customIcon} />
+                  <TwitterIcon className={classes.customIcon} />
+                  <PatreonIcon className={classes.customIcon} />
+                  <YoutubeIcon className={classes.customIcon} />
                 </div>
               </div>
             </Grid>
