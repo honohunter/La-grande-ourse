@@ -2,17 +2,23 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, Typography, Hidden, Container, Grid } from '@material-ui/core';
 
-import SectionABackground from '../assets/images/sectionA-background.inline.svg';
+import SectionABackground from '../assets/images/sectionA-background.svg';
 import SectionALeftImage from '../assets/images/sectionA-left-image.inline.svg';
 import SectionARightImage from '../assets/images/sectionA-right-image.inline.svg';
 
 const useStyles = makeStyles(theme => ({
   section: {
+    overflow: 'hidden',
+    position: 'relative',
+    [theme.breakpoints.up('md')]: {
+      backgroundImage: `url(${SectionABackground})`,
+      backgroundPositionX: 'center',
+      backgroundPositionY: 'bottom',
+      backgroundSize: 'cover',
+    },
     [theme.breakpoints.up('lg')]: {
       maxHeight: 453,
     },
-    overflow: 'hidden',
-    position: 'relative',
   },
   backgroundImage: {
     width: '100%',
@@ -29,16 +35,13 @@ const useStyles = makeStyles(theme => ({
     right: -230,
   },
   container: {
-    [theme.breakpoints.up('md')]: {
-      position: 'absolute',
-    },
     [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(8, 4),
     },
     top: 0,
     left: 0,
     right: 0,
-    height: '100%',
+    height: 435,
   },
   grid: {
     height: '100%',
@@ -55,9 +58,6 @@ export default function SectionA() {
     <section className={classes.section}>
       <Hidden smDown>
         <SectionALeftImage className={classes.sectionALeftImage} />
-      </Hidden>
-      <Hidden smDown>
-        <SectionABackground className={classes.backgroundImage} />
       </Hidden>
       <Container className={classes.container}>
         <Grid container direction="row" alignItems="center" justify="center" className={classes.grid}>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { makeStyles, Typography, Hidden, Container, Grid, Box, Paper, Button, TextField } from '@material-ui/core';
+import { Element, scroller, Events } from 'react-scroll';
 
 import ImageLoader from '../components/imagesLoader';
 import Slider from '../components/slider';
@@ -75,7 +76,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 5,
   },
   gridSpacing: {
-    padding: theme.spacing(5),
+    padding: theme.spacing(3),
     [theme.breakpoints.only('xs')]: {
       padding: theme.spacing(5, 1),
     },
@@ -96,6 +97,14 @@ const useStyles = makeStyles(theme => ({
   card: {
     borderRadius: 25,
     overflow: 'hidden',
+    position: 'relative',
+    top: 0,
+    [theme.breakpoints.only('md')]: {
+      width: 272,
+    },
+    [theme.breakpoints.up('lg')]: {
+      width: 379,
+    },
   },
   cardHeader: {
     padding: theme.spacing(3, 0),
@@ -392,6 +401,7 @@ export default function SectionB() {
   const classes = useStyles();
   const [guided, setGuided] = useState(true);
   const [sessionPlace, setSessionPlace] = useState(1);
+  const [cardPosition, setCardPosition] = useState({ position: 'relative', top: 0 });
 
   const handelButtonClick = element => {
     if (element.currentTarget.id === 'yes-button') {
@@ -405,6 +415,23 @@ export default function SectionB() {
     console.log(element.currentTarget.value);
     setSessionPlace(element.currentTarget.value);
   };
+
+  useEffect(() => {
+    const onScroll = e => {
+      if (window.screen.width >= 960) {
+        if (e.target.documentElement.scrollTop > 599 && e.target.documentElement.scrollTop < 1700) {
+          setCardPosition({ position: 'fixed' });
+        } else if (e.target.documentElement.scrollTop >= 1700) {
+          setCardPosition({ position: 'relative', top: window.screen.width <= 1280 ? 1065 : 1106 });
+        } else {
+          setCardPosition({ position: 'relative', top: 0 });
+        }
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <section className={classes.section}>
@@ -542,7 +569,20 @@ export default function SectionB() {
               <TextField defaultValue={8} variant="outlined" size="small" type="number" className={classes.textField} />
               <Hidden mdUp>
                 <div className={classes.buttonWrapper}>
-                  <Button variant="contained" color="primary" disableElevation fullWidth>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    disableElevation
+                    fullWidth
+                    onClick={() => {
+                      scroller.scrollTo('scrollToCard', {
+                        duration: 1000,
+                        delay: 100,
+                        smooth: true,
+                        offset: -10,
+                      });
+                    }}
+                  >
                     Calculer le montant
                   </Button>
                 </div>
@@ -550,31 +590,37 @@ export default function SectionB() {
             </Paper>
           </Grid>
           <Grid item xs={12} md={4} className={classes.gridSpacing}>
-            <Paper elevation={6} className={classes.card}>
-              <div className={classes.cardHeader}>
-                <Typography variant="body2" align="center" color="textSecondary">
-                  Montant recommandé
-                </Typography>
-              </div>
-              <div className={classes.cardBody}>
-                <div className={classes.outputSection}>
-                  <TextField value="55€" variant="outlined" size="small" className={classes.outputText} />
+            <Element name="scrollToCard" style={{ position: 'relative' }}>
+              <Paper
+                elevation={6}
+                className={classes.card}
+                style={{ position: cardPosition.position, top: cardPosition.top }}
+              >
+                <div className={classes.cardHeader}>
                   <Typography variant="body2" align="center" color="textSecondary" component="div">
-                    <Box fontWeight={500}>/participant</Box>
+                    <Box fontWeight={500}> Montant recommandé</Box>
                   </Typography>
                 </div>
-                <Typography variant="h3" align="center" color="textSecondary" component="div">
-                  <Box fontWeight={400} margin={3}>
-                    Soit <b>330€</b> pour 8 participants
-                  </Box>
-                </Typography>
-                <Typography align="center" color="textSecondary" component="div">
-                  <Box fontWeight={400} fontSize={12}>
-                    Ce montant est calculé sur étude des prix constatés.
-                  </Box>
-                </Typography>
-              </div>
-            </Paper>
+                <div className={classes.cardBody}>
+                  <div className={classes.outputSection}>
+                    <TextField value="55€" variant="outlined" size="small" className={classes.outputText} />
+                    <Typography variant="body2" align="center" color="textSecondary" component="div">
+                      <Box fontWeight={500}>/participant</Box>
+                    </Typography>
+                  </div>
+                  <Typography variant="h3" align="center" color="textSecondary" component="div">
+                    <Box fontWeight={400} margin={3}>
+                      Soit <b>330€</b> pour 8 participants
+                    </Box>
+                  </Typography>
+                  <Typography align="center" color="textSecondary" component="div">
+                    <Box fontWeight={400} fontSize={12}>
+                      Ce montant est calculé sur étude des prix constatés.
+                    </Box>
+                  </Typography>
+                </div>
+              </Paper>
+            </Element>
           </Grid>
         </Grid>
       </Container>

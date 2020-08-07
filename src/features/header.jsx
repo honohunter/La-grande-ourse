@@ -107,7 +107,7 @@ const mobilePages = [
 export default function Header() {
   const classes = useStyles();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('#home');
+  const [activeLink, setActiveLink] = useState(false);
 
   const handleMenuButtonClick = () => {
     setMobileMenuOpen(!isMobileMenuOpen);

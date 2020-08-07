@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import {
   makeStyles,
@@ -90,6 +90,9 @@ const useStyles = makeStyles(theme => ({
   inputLabelPropsFocused: {
     color: 'transparent !important',
   },
+  inputLabelProps:{
+    color: '#505361',
+  },
   inputProps: {
     color: '#000000',
   },
@@ -107,6 +110,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Footer() {
   const classes = useStyles();
+  const [shrink, setShrink] = useState(true);
   return (
     <section className={classes.section}>
       <Container className={classes.container}>
@@ -221,9 +225,12 @@ export default function Footer() {
                     size="small"
                     InputLabelProps={{
                       shrink: false,
-                      classes: { focused: classes.inputLabelPropsFocused },
+                      classes: { focused: classes.inputLabelPropsFocused, root: classes.inputLabelProps },
                     }}
                     InputProps={{ classes: { root: classes.inputProps } }}
+                    onFocus={() => {
+                      setShrink(false);
+                    }}
                   />
                   <Button variant="contained" color="primary" disableElevation className={classes.button}>
                     Ok

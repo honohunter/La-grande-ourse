@@ -5,17 +5,18 @@ import { makeStyles, Typography, Hidden, Container, Grid, Box, Button, Avatar } 
 import ImageLoader from '../components/imagesLoader';
 
 import SectionCBackground from '../assets/images/sectionC-background.svg';
-import SectionCMobileBackground from '../assets/images/sectionC-mobile-background.svg';
+// import SectionCMobileBackground from '../assets/images/sectionC-mobile-background.svg';
 
 const useStyles = makeStyles(theme => ({
   section: {
     position: 'relative',
     overflow: 'hidden',
     backgroundSize: 'cover',
-    backgroundImage: `url(${SectionCMobileBackground})`,
-    [theme.breakpoints.up('sm')]: {
-      backgroundImage: `url(${SectionCBackground})`,
-    },
+    backgroundImage: `url(${SectionCBackground})`,
+    backgroundPositionX: 'center',
+    // [theme.breakpoints.up('sm')]: {
+    //   backgroundImage: `url(${SectionCBackground})`,
+    // },
   },
   container: {
     height: '100%',

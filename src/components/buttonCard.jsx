@@ -9,7 +9,7 @@ const StyledPaper = withStyles(theme => ({
     borderRadius: 12,
     overflow: 'hidden',
     [theme.breakpoints.only('xs')]: {
-      // height: 232,
+      height: 232,
     },
   },
 }))(Paper);
@@ -28,13 +28,15 @@ const StyledButtonBase = withStyles(theme => ({
 
 const ImageWrapper = withStyles(theme => ({
   root: {
-    height: 150,
+    height: 165,
     width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ffffff',
-    padding: theme.spacing(2, 0),
+    [theme.breakpoints.only('xs')]: {
+      height: 100,
+    },
   },
 }))(Box);
 
