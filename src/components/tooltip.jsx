@@ -1,5 +1,5 @@
-import React from 'react';
-import { withStyles, Tooltip, Box } from '@material-ui/core';
+import React, { useState } from 'react';
+import { withStyles, Tooltip, ButtonBase } from '@material-ui/core';
 
 const StyledToolTip = withStyles(theme => ({
   tooltip: {
@@ -21,9 +21,33 @@ const StyledToolTip = withStyles(theme => ({
 
 export default function CustomTooltip(props) {
   const { children } = props;
+  const [open, setOpen] = useState(false);
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  };
+
   return (
-    <StyledToolTip arrow enterDelay={500} leaveDelay={200} {...props}>
-      <div style={{ cursor: 'pointer' }}>{children}</div>
+    <StyledToolTip
+      arrow
+      enterDelay={500}
+      leaveDelay={200}
+      PopperProps={{
+        disablePortal: true,
+      }}
+      onClose={handleTooltipClose}
+      open={open}
+      disableHoverListener
+      disableTouchListener
+      {...props}
+    >
+      <div style={{ cursor: 'pointer' }}>
+        <ButtonBase onClick={handleTooltipOpen}>{children}</ButtonBase>
+      </div>
     </StyledToolTip>
   );
 }
