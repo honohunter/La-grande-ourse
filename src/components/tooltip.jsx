@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withStyles, Tooltip, ButtonBase } from '@material-ui/core';
+import { withStyles, Tooltip, ButtonBase, ClickAwayListener } from '@material-ui/core';
 
 const StyledToolTip = withStyles(theme => ({
   tooltip: {
@@ -32,22 +32,25 @@ export default function CustomTooltip(props) {
   };
 
   return (
-    <StyledToolTip
-      arrow
-      enterDelay={500}
-      leaveDelay={200}
-      PopperProps={{
-        disablePortal: true,
-      }}
-      onClose={handleTooltipClose}
-      open={open}
-      disableHoverListener
-      disableTouchListener
-      {...props}
-    >
-      <div style={{ cursor: 'pointer' }}>
-        <ButtonBase onClick={handleTooltipOpen}>{children}</ButtonBase>
-      </div>
-    </StyledToolTip>
+    <ClickAwayListener onClickAway={handleTooltipClose}>
+      <StyledToolTip
+        arrow
+        enterDelay={500}
+        leaveDelay={200}
+        PopperProps={{
+          disablePortal: true,
+        }}
+        onClose={handleTooltipClose}
+        open={open}
+        disableFocusListener
+        disableHoverListener
+        disableTouchListener
+        {...props}
+      >
+        <div style={{ cursor: 'pointer' }}>
+          <ButtonBase onClick={handleTooltipOpen}>{children}</ButtonBase>
+        </div>
+      </StyledToolTip>
+    </ClickAwayListener>
   );
 }
